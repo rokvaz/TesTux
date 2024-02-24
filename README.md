@@ -1,2 +1,2 @@
 # TesTux
-kodoBezdziones komandos projektas. KTU
+kodoBezdziones komandos projektas.
