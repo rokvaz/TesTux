@@ -1,2 +1,2 @@
 # TesTux
-kodoBezdziones projektas. TODO RENAME i proper name kuri sugalvosim
+kodoBezdziones komandos projektas. KTU
