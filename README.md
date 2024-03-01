@@ -4,6 +4,11 @@ KTU
 
 # Set-up
 ## Tools
+
+First pull the project
+```git clone https://github.com/rokvaz/TesTux```
+
+
 Download the latest version of nvm-windows (Node version manager for windows) from [here](https://github.com/coreybutler/nvm-windows/releases)
 I recommend installing "nvm-setup.exe". After that don't forget to restart your terminal window.
 
