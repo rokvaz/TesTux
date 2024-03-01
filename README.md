@@ -1,9 +1,32 @@
 # TesTux
 kodoBezdziones komandos projektas.
 KTU
+]
+
+# Set-up
+## Server side setup
+
 
 First pull the project
 ```git clone https://github.com/rokvaz/TesTux```
+
+install nvm (if not present)
+```curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash ```
+
+setup nvm
+```nvm install --lts```
+```nvm use 20.11.1```
+
+
+install next
+```npm install next@latest react@latest react-dom@latest```
+
+inside frontend folder run:
+```npm run build```
+and
+```npm run start```
+
+The frontend will be running at port 3000
 
 # Set-up
 ## Tools
