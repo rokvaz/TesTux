@@ -1,7 +1,7 @@
 # TesTux
 kodoBezdziones komandos projektas.
 KTU
-]
+
 
 # Set-up
 ## Server side setup
