@@ -1,4 +1,5 @@
 import '../app/globals.css';
+import Link from 'next/link';
 
 export default function Quiz() {
   return (
@@ -27,6 +28,9 @@ export default function Quiz() {
         <button className="bg-custom-brown p-4 text-white font-bold rounded-lg shadow-md transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
           4
         </button>
+      </div>
+      <div className="mb-8 p-4 absolute bottom-0 h-16 w-16 bg-custom-yellow text-white font-bold rounded-lg shadow-md transform transition duration-150 ease-in-out hover:scale-105 active:scale-90 ">
+       <Link href= "/howtoplay"><button className = "h-8 w-8">Help</button></Link>
       </div>
     </div>
   );
