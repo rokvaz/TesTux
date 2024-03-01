@@ -38,4 +38,10 @@ And launch the app with
 Close the app with
 ```ctrl + C```
 
+If you're getting errors like "next is not recognized as an internal or external command, ..." run this command to install the
+necessary tools:
+```
+npm install react react-dom next
+```
+
 
