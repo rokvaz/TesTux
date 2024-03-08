@@ -18,8 +18,13 @@ setup nvm
 ```nvm use 20.11.1```
 
 
-install next
-```npm install next@latest react@latest react-dom@latest```
+update npm just since sometimes its not up to date:
+```npm install -g npm```
+
+enter frontend folder and install next
+```npm install next@latest```
+```npm install react@latest```
+```npm install react-dom@latest```
 
 inside frontend folder run:
 ```npm run build```
