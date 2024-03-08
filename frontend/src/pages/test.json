@@ -1,0 +1,38 @@
+[
+  {
+    "klausimas": "Kiek žmoniu yra mūsų komandoje",
+    "taskai": 50,
+    "tipas": 4,
+    "teising_ats": 4,
+    "neteising_ats1": 3,
+    "neteising_ats2": 2,
+    "neteising_ats3": 1
+  },
+  {
+    "klausimas": "Kokiame mieste esame dabar",
+    "taskai": 60,
+    "tipas": 4,
+    "teising_ats": "Kaune",
+    "neteising_ats1": "Šiauliuose",
+    "neteising_ats2": "Klaipėdoje",
+    "neteising_ats3": "Vilniuje"
+  },
+  {
+    "klausimas": "Kiek kainuoja šalta arbata fakultete",
+    "taskai": 10,
+    "tipas": 4,
+    "teising_ats": "1 eur",
+    "neteising_ats1": "0.60 eur",
+    "neteising_ats2": "1.5 eur",
+    "neteising_ats3": "0.9 eur"
+  },
+  {
+    "klausimas": "Ar KTU yra universitetas",
+    "taskai": 100,
+    "tipas": 2,
+    "teising_ats": "TAIP",
+    "neteising_ats1": "NE",
+    "neteising_ats2": "",
+    "neteising_ats3": ""
+  }
+]
