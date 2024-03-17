@@ -67,6 +67,8 @@ export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [score, setScore] = useState(0);
   const [bgColor, setBgColor] = useState("bg-custom-aqua");
+  const [seconds, setSeconds] = useState(30); // Starting seconds for the timer
+  const [isActive, setIsActive] = useState(true); // Timer active state
 
   let shuffleAnswers = (array: Answer[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -86,16 +88,35 @@ export default function Quiz() {
       const timer = setTimeout(() => {
         setScore(() => score + answer.points)
       }, 500)
+      resetTimer();
     } else { // Wrong answer picked -> game over
+      stopTimer();
       const timer = setTimeout(() => {
-        setBgColor("bg-red-500") // Change background to red
-        document.getElementById("box")!.innerHTML="Game over" // Write "game over" in question box
-        document.getElementById("choice")!.innerHTML="" // Delete all buttons
-        const timer = setTimeout(() => { // Redirect to gameover page after 1.5 sec
-          window.location.href = 'http://localhost:3000/gameover';
-        }, 1500);
+      gameOverAction();
       }, 500)
     }
+  }
+  // Start the timer
+  const startTimer = () => {
+    setIsActive(true);
+  };
+  const stopTimer = () => {
+    setIsActive(false);
+  }
+
+  // Reset the timer
+  const resetTimer = () => {
+    setIsActive(true);
+    setSeconds(30); // Reset to starting seconds
+  };
+
+  const gameOverAction = () => {
+    setBgColor("bg-red-500") // Change background to red
+    document.getElementById("box")!.innerHTML="Game over" // Write "game over" in question box
+    document.getElementById("choice")!.innerHTML="" // Delete all buttons
+    const timer = setTimeout(() => { // Redirect to gameover page after 1.5 sec
+      window.location.href = 'http://localhost:3000/gameover';
+    }, 1500);
   }
 
   useEffect(() => {
@@ -136,6 +157,21 @@ export default function Quiz() {
   }, [score]);
 
   useEffect(() => {
+    let interval: any = null;
+    if (isActive && seconds > 0) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds - 1);
+      }, 1000);
+    } else if (seconds === 0) {
+      gameOverAction();
+      setIsActive(false); // Optionally stop the timer
+    } else if (!isActive) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
+
+  useEffect(() => {
   }, [bgColor])
 
   if (!currentQuestion) return <div>Loading question...</div>;
@@ -149,7 +185,7 @@ export default function Quiz() {
 
       {/* Timer at the top */}
       <div className="text-5xl font-bold mb-8 p-4">
-        30
+        {seconds}
       </div>
 
       {/* Question section */}
