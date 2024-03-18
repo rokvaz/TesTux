@@ -1,4 +1,5 @@
 import '../app/globals.css';
+import Link from 'next/link';
 
 export default function HowToPlay() {
     return (
@@ -24,9 +25,9 @@ export default function HowToPlay() {
             </div>
 
             {/* Navigation/Back Button */}
-            <button className="mt-4 px-4 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
+            <Link href="/main"><button className="mt-4 px-4 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
             Back to Menu
-            </button>
+            </button></Link>
         </div>
     );
 }
