@@ -22,7 +22,7 @@ export default function MysqlTest({ data }: MysqlTestProps) {
 
 export const getServerSideProps: GetServerSideProps<MysqlTestProps> = async () => {
   const connection = await connectToMySQL();
-  const [rows] = await connection.execute<RowDataPacket[]>('SELECT * FROM your_table');
+  const [rows] = await connection.execute<RowDataPacket[]>('SELECT * FROM Testai');
   await connection.end();
 
   
