@@ -3,7 +3,7 @@ import { RowDataPacket as MySQLRowDataPacket } from 'mysql2';
 import dotenv from 'dotenv';
 import path from 'path';
 
-dotenv.config({ path: path.resolve(__dirname, '../../config.env') });
+dotenv.config({ path: path.resolve(__dirname, 'config.env') });
 
 export async function connectToMySQL(): Promise<Connection> {
   try {
