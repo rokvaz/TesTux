@@ -1,4 +1,4 @@
-import { connectToMySQL, RowDataPacket } from '../utils/db';
+import { connectToMySQL, RowDataPacket } from '../utils/sql';
 import { GetServerSideProps } from 'next';
 
 interface MySQLData {
