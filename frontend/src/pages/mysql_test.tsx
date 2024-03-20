@@ -1,12 +1,12 @@
-
-import { connectToMySQL, RowDataPacket } from '../utils/sql'
+import { connectToMySQL, RowDataPacket } from '../utils/db';
 import { GetServerSideProps } from 'next';
 
 interface MySQLData {
+  
 }
 
 interface MysqlTestProps {
-  data: MySQLData[];
+  data: MySQLData[]; 
 }
 
 export default function MysqlTest({ data }: MysqlTestProps) {
@@ -23,8 +23,11 @@ export default function MysqlTest({ data }: MysqlTestProps) {
 export const getServerSideProps: GetServerSideProps<MysqlTestProps> = async () => {
   const connection = await connectToMySQL();
   const [rows] = await connection.execute<RowDataPacket[]>('SELECT * FROM your_table');
-  await connection.end();)
+  await connection.end();
+
+  
   const transformedData: MySQLData[] = rows.map(row => ({
+    
   }));
 
   return {
