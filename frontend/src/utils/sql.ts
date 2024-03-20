@@ -1,17 +1,18 @@
-import mysql, { Connection } from 'mysql2/promise';
-import { RowDataPacket as MySQLRowDataPacket } from 'mysql2';
-import dotenv from 'dotenv';
-import path from 'path';
+import mysql, { Connection, RowDataPacket } from 'mysql2/promise';
 
-dotenv.config({ path: path.resolve(__dirname, 'config.env') });
+// Raw MySQL connection parameters
+const MYSQL_HOST = 'your_mysql_host';
+const MYSQL_USER = 'your_mysql_user';
+const MYSQL_PASSWORD = 'your_mysql_password';
+const MYSQL_DATABASE = 'your_mysql_database';
 
 export async function connectToMySQL(): Promise<Connection> {
   try {
     const connection = await mysql.createConnection({
-      host: process.env.MYSQL_HOST,
-      user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
+      host: MYSQL_HOST,
+      user: MYSQL_USER,
+      password: MYSQL_PASSWORD,
+      database: MYSQL_DATABASE,
     });
     console.log('Connected to MySQL database successfully.');
     return connection;
@@ -21,4 +22,4 @@ export async function connectToMySQL(): Promise<Connection> {
   }
 }
 
-export type RowDataPacket = MySQLRowDataPacket;
+export { RowDataPacket };
