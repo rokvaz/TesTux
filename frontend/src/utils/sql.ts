@@ -22,4 +22,4 @@ export async function connectToMySQL(): Promise<Connection> {
   }
 }
 
-export { RowDataPacket };
+export type { RowDataPacket };
