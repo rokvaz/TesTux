@@ -21,12 +21,12 @@ setup nvm
 update npm just since sometimes its not up to date:
 ```npm install -g npm```
 <br>
-enter frontend folder and install next
+enter frontend folder and install prerequisites
 ```npm install next@latest```
 ```npm install react@latest```
 ```npm install react-dom@latest```
 ```npm install mysql2 dotenv```
-<br><br><br>
+<br><br>
 update ```env.local.example``` file with your mysql server logins and rename it to ```env.local``` 
 <br>
 inside frontend folder run:
