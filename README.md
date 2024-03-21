@@ -25,11 +25,15 @@ enter frontend folder and install next
 ```npm install next@latest```
 ```npm install react@latest```
 ```npm install react-dom@latest```
+```npm install mysql2 dotenv```
+
+update ```env.local.example``` file with your mysql server logins and rename it to ```env.local``` 
 
 inside frontend folder run:
 ```npm run build```
 and
 ```npm run start```
+
 
 The frontend will be running at port 3000
 
