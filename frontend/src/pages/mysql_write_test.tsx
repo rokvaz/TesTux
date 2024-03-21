@@ -24,11 +24,12 @@ export default function MySQLWriteTest() {
   });
 
   const [responseData, setResponseData] = useState(null);
-  const [responseDataKlausimai, setResponseDataKlausimai] = useState(null);
+  //const [responseDataKlausimai, setResponseDataKlausimai] = useState(null);
+  const [responseDataKlausimai, setResponseDataKlausimai] = useState<{ id: string } | null>(null);
   const [responseDataAtsakymai, setResponseDataAtsakymai] = useState(null);
   const [responseDataRezultatai, setResponseDataRezultatai] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
@@ -36,7 +37,7 @@ export default function MySQLWriteTest() {
     }));
   };
 
-  const handleChangeKlausimai = (e) => {
+  const handleChangeKlausimai = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormDataKlausimai(prevState => ({
       ...prevState,
@@ -44,7 +45,7 @@ export default function MySQLWriteTest() {
     }));
   };
 
-  const handleChangeAtsakymai = (e) => {
+  const handleChangeAtsakymai = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormDataAtsakymai(prevState => ({
       ...prevState,
@@ -52,14 +53,13 @@ export default function MySQLWriteTest() {
     }));
   };
 
-  const handleChangeRezultatai = (e) => {
+  const handleChangeRezultatai = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormDataRezultatai(prevState => ({
       ...prevState,
       [name]: value
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -85,7 +85,7 @@ export default function MySQLWriteTest() {
     }
   };
 
-  const handleSubmitKlausimai = async (e) => {
+  const handleSubmitKlausimai = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await fetch('/api/writek', {
@@ -112,7 +112,7 @@ export default function MySQLWriteTest() {
     }
   };
 
-  const handleSubmitAtsakymai = async (e) => {
+  const handleSubmitAtsakymai = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await fetch('api/writea', {
@@ -139,7 +139,7 @@ export default function MySQLWriteTest() {
   };
 
   
-  const handleSubmitRezultatai = async (e) => {
+  const handleSubmitRezultatai = async (e: React.FormEvent<HTMLFormElement>)  => {
     e.preventDefault();
     try {
       const response = await fetch('api/writepl', {
