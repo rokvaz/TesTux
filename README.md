@@ -26,7 +26,7 @@ enter frontend folder and install next
 ```npm install react@latest```
 ```npm install react-dom@latest```
 ```npm install mysql2 dotenv```
-<br>
+<br><br><br>
 update ```env.local.example``` file with your mysql server logins and rename it to ```env.local``` 
 <br>
 inside frontend folder run:
