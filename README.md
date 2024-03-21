@@ -9,32 +9,32 @@ KTU
 
 First pull the project
 ```git clone https://github.com/rokvaz/TesTux```
-
+<br>
 install nvm (if not present)
 ```curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash ```
-
+<br>
 setup nvm
 ```nvm install --lts```
 ```nvm use 20.11.1```
-
-
+<br>
+<br>
 update npm just since sometimes its not up to date:
 ```npm install -g npm```
-
+<br>
 enter frontend folder and install next
 ```npm install next@latest```
 ```npm install react@latest```
 ```npm install react-dom@latest```
 ```npm install mysql2 dotenv```
-
+<br>
 update ```env.local.example``` file with your mysql server logins and rename it to ```env.local``` 
-
+<br>
 inside frontend folder run:
 ```npm run build```
 and
 ```npm run start```
-
-
+<br>
+<br>
 The frontend will be running at port 3000
 
 # Set-up
