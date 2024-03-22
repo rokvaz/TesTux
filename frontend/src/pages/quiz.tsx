@@ -191,7 +191,20 @@ export default function Quiz() {
       {/* Question section */}
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full mb-8 text-center">
         <h2 className="text-2xl font-bold text-gray-800" id="box">{currentQuestion.question}</h2>
-      </div>
+          </div>
+          {/* Powerup menu */}
+          <div className="fixed top-50 right-10 bg-white p-35 rounded-lg shadow-lg max-w-2xl mb-8 text-center flex flex-col justify-end">
+              <h2 className="text-2xl font-bold text-gray-800" id="box">Power Ups</h2>
+              <button className="mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
+                  50/50
+              </button>
+              <button className="mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
+                  Add time
+              </button>
+              <button className="mb-4 mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
+                  Random ability
+              </button>
+            </div>
 
       {(currentQuestion.questionType == 4) ? (
         <div className="grid grid-cols-2 gap-4 max-w-xs w-full" id="choice">
