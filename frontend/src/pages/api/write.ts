@@ -17,18 +17,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 }
 
-
 const getHighestIdFromDatabase = async (tableName: string): Promise<number> => {
   try {
     const data = await getDataFromDatabase(tableName);
-
     let highestId = 0;
     for (const row of data) {
       if (row.id > highestId) {
         highestId = row.id;
       }
     }
-
     return highestId;
   } catch (error) {
     console.error('Error retrieving highest ID from the database:', error);

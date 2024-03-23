@@ -4,9 +4,9 @@ import { writeDataToDatabaseSpecial, getDataFromDatabase } from '../../utils/sql
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const highestId = await getHighestIdFromDatabase('atsakymai');
+      const highestId = await getHighestIdFromDatabase('Atsakymai');
       const newData = { ...req.body, id: highestId + 1 };
-      await writeDataToDatabaseSpecial('atsakymai', newData);
+      await writeDataToDatabaseSpecial('Atsakymai', newData);
       res.status(200).json({ message: 'Data successfully written to the database' });
     } catch (error) {
       console.error('Error writing data to the database:', error);
