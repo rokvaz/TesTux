@@ -39,7 +39,9 @@ export async function getServerSideProps() {
     const data = await getDataFromDatabase(tableName) as RowDataPacket[];
     const columns = await query(`SHOW COLUMNS FROM ${tableName}`, []);
     const headers = (columns as RowDataPacket[]).map(column => column.Field);
-    const formattedData = data.map(row => Object.values(row));
+    const formattedData = data.map(row => {
+      return Object.values(row).map(value => value instanceof Date ? value.toISOString() : value);
+    });
     
     return {
       props: {
