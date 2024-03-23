@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 const getIdByText = async (tekstas: string) => {
   try {
-    const allData = await getDataFromDatabase('klausimai');
+    const allData = await getDataFromDatabase('Klausimai');
 
     const item = allData.find(item => item.tekstas === tekstas);
     const id = item ? item.id : null;
