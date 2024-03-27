@@ -128,6 +128,14 @@ export default function Quiz() {
   let buyPowerup = (item: PowerUp) => {
     if (score >= item.cost) {
       setScore(() => score - item.cost)
+
+      if (item.id === 0) {
+        // Not implemented yet
+      } else if (item.id === 1) {
+        addTimePowerUp()
+      } else if (item.id === 2) {
+        // Not implemented yet
+      }
     } else {
       displayError("Not enough score points to buy a power-up")
     }
@@ -151,9 +159,9 @@ export default function Quiz() {
     setSeconds(30); // Reset to starting seconds
   };
 
-  /*const gameOverAction = () => {
-    
-  }*/
+  const addTimePowerUp = () => {
+    setSeconds(() => seconds + 4)
+  };
 
   const gameOverAction = useCallback(() => {
     setBgColor("bg-red-500") // Change background to red
