@@ -1,6 +1,6 @@
 import '../app/globals.css';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const jsonResponse: ResponseQuestion [] = [
   {
@@ -151,7 +151,11 @@ export default function Quiz() {
     setSeconds(30); // Reset to starting seconds
   };
 
-  const gameOverAction = () => {
+  /*const gameOverAction = () => {
+    
+  }*/
+
+  const gameOverAction = useCallback(() => {
     setBgColor("bg-red-500") // Change background to red
     displayError("");
     document.getElementById("box")!.innerHTML="Game over" // Write "game over" in question box
@@ -159,7 +163,7 @@ export default function Quiz() {
     const timer = setTimeout(() => { // Redirect to gameover page after 1.5 sec
       window.location.href = 'http://localhost:3000/gameover';
     }, 1500);
-  }
+  }, []);
 
   useEffect(() => {
     // Function to pick a random question
@@ -211,7 +215,7 @@ export default function Quiz() {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds]);
+  }, [isActive, seconds, gameOverAction]);
 
   useEffect(() => {
   }, [bgColor])
@@ -242,7 +246,7 @@ export default function Quiz() {
               <h2 className="text-2xl font-bold text-gray-800" id="box">Power Ups</h2>
               {
                 powerUps.map((item, index) => (
-                  <button onClick={() => {buyPowerup(item)}} className="mb-4 mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
+                  <button onClick={() => {buyPowerup(item)}} key={item.id} className="mb-4 mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
                     { item.name } - { item.cost }
                   </button>
                 ))
