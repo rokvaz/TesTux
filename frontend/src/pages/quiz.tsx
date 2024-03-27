@@ -41,6 +41,24 @@ const jsonResponse: ResponseQuestion [] = [
   }
 ]
 
+const powerUps: PowerUp [] = [
+  {
+    id: 0,
+    name: "50/50",
+    cost: 50
+  },
+  {
+    id: 1,
+    name: "Add time",
+    cost: 30
+  },
+  {
+    id: 2,
+    name: "Random ability",
+    cost: 20
+  }
+]
+
 interface Answer {
   text: string | number;
   isCorrect: boolean;
@@ -62,6 +80,12 @@ interface ResponseQuestion {
   neteising_ats3: string | number;
 }
 
+interface PowerUp {
+  id: number;
+  name: string;
+  cost: number;
+}
+
 export default function Quiz() {
 
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -69,6 +93,8 @@ export default function Quiz() {
   const [bgColor, setBgColor] = useState("bg-custom-aqua");
   const [seconds, setSeconds] = useState(30); // Starting seconds for the timer
   const [isActive, setIsActive] = useState(true); // Timer active state
+  const [changeQuestion, setChangeQuestion] = useState(false); // State to track when to change question
+  const [error, setError] = useState(""); // Last got error message
 
   let shuffleAnswers = (array: Answer[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -87,8 +113,10 @@ export default function Quiz() {
       //setScore(() => score + answer.points)
       const timer = setTimeout(() => {
         setScore(() => score + answer.points)
+        setChangeQuestion(() => !changeQuestion)
       }, 500)
       resetTimer();
+      displayError("");
     } else { // Wrong answer picked -> game over
       stopTimer();
       const timer = setTimeout(() => {
@@ -96,6 +124,19 @@ export default function Quiz() {
       }, 500)
     }
   }
+
+  let buyPowerup = (item: PowerUp) => {
+    if (score >= item.cost) {
+      setScore(() => score - item.cost)
+    } else {
+      displayError("Not enough score points to buy a power-up")
+    }
+  }
+
+  let displayError = (error: string) => {
+    setError(() => error)
+  }
+
   // Start the timer
   const startTimer = () => {
     setIsActive(true);
@@ -112,6 +153,7 @@ export default function Quiz() {
 
   const gameOverAction = () => {
     setBgColor("bg-red-500") // Change background to red
+    displayError("");
     document.getElementById("box")!.innerHTML="Game over" // Write "game over" in question box
     document.getElementById("choice")!.innerHTML="" // Delete all buttons
     const timer = setTimeout(() => { // Redirect to gameover page after 1.5 sec
@@ -154,7 +196,7 @@ export default function Quiz() {
     };
 
     pickRandomQuestion();
-  }, [score]);
+  }, [changeQuestion]);
 
   useEffect(() => {
     let interval: any = null;
@@ -173,6 +215,9 @@ export default function Quiz() {
 
   useEffect(() => {
   }, [bgColor])
+
+  useEffect(() => {
+  }, [error])
 
   if (!currentQuestion) return <div>Loading question...</div>;
 
@@ -195,16 +240,14 @@ export default function Quiz() {
           {/* Powerup menu */}
           <div className="fixed top-50 right-10 bg-white p-35 rounded-lg shadow-lg max-w-2xl mb-8 text-center flex flex-col justify-end">
               <h2 className="text-2xl font-bold text-gray-800" id="box">Power Ups</h2>
-              <button className="mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
-                  50/50
-              </button>
-              <button className="mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
-                  Add time
-              </button>
-              <button className="mb-4 mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
-                  Random ability
-              </button>
-            </div>
+              {
+                powerUps.map((item, index) => (
+                  <button onClick={() => {buyPowerup(item)}} className="mb-4 mx-4 mt-4 px-10 py-2 bg-custom-brown text-white font-bold rounded transform transition duration-150 ease-in-out hover:scale-105 active:scale-90">
+                    { item.name } - { item.cost }
+                  </button>
+                ))
+              }
+          </div>
 
       {(currentQuestion.questionType == 4) ? (
         <div className="grid grid-cols-2 gap-4 max-w-xs w-full" id="choice">
@@ -232,6 +275,10 @@ export default function Quiz() {
         </div>
         )
       }
+
+      <div className="text-xl font-bold mb-8 p-4">
+        {error}
+      </div>
       
       <div className="mb-8 p-4 absolute bottom-0 h-16 w-16 bg-custom-yellow text-white font-bold rounded-lg shadow-md transform transition duration-150 ease-in-out hover:scale-105 active:scale-90 ">
        <Link href= "/howtoplay"><button className = "h-8 w-8">Help</button></Link>

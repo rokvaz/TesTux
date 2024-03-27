@@ -22,6 +22,12 @@ export default function HowToPlay() {
                 <p>[provide an example of the format]</p>
                 <p>Click the upload button</p>
             </div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Power-ups</h2>
+            <div className="text-gray-800 mb-8">
+                <p><b>50/50</b> hints the user of which 2 out of 4 answers may be correct.</p>
+                <p><b>Add Time</b> adds a few more seconds to the remaining answer time.</p>
+                <p><b>Random Ability</b> buys a random ability from the available ones</p>
+            </div>
             </div>
 
             {/* Navigation/Back Button */}
